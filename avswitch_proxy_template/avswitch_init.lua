@@ -176,7 +176,40 @@ function PROTOCOL_DECLARATIONS.InputOutputTableInit()
 		[2004] = "05",
 		[2005] = "06",
 		[2006] = "07",
-		[2007] = "08"
+		[2007] = "08",
+		[3000] = "01",
+		[3001] = "02",
+		[3002] = "03",
+		[3003] = "04",
+		[3004] = "05",
+		[3005] = "06",
+		[3006] = "07",
+		[3007] = "08"
+	}
+
+	tOutputIntMap = {
+		--index:  value of Output Connection id
+		--value:  Protocol Command Data
+		[0] = "01",
+		[1] = "02",
+		[2] = "03",
+		[3] = "04",
+		[4] = "05",
+		[5] = "06",
+		[6] = "07",
+		[7] = "08"
+	}
+	tInputIntMap = {
+		--index:  value of Output Connection id
+		--value:  Protocol Command Data
+		[0] = "01",
+		[1] = "02",
+		[2] = "03",
+		[3] = "04",
+		[4] = "05",
+		[5] = "06",
+		[6] = "07",
+		[7] = "08"
 	}
 	
 	tInputCommandMap = {

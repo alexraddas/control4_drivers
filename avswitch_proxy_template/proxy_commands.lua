@@ -39,7 +39,7 @@ function CONNECT_OUTPUT(output, class, output_id)
     else
 
 		-- TODO: create packet/command to send to the device
-		command = CMDS["CONNECT_OUTPUT"] .. output
+		command = CMDS["CONNECT_OUTPUT"] .. tOutputIntMap[output]
 		--command = ""		--tPowerCommandMap[output] .. "01"
 		LogTrace("command = " .. command)
 		PackAndQueueCommand("CONNECT_OUTPUT", command, command_delay, delay_units)
@@ -104,7 +104,7 @@ function DISCONNECT_OUTPUT(output, class, output_id)
 	-- 	  command = ""		--video disconnect element
 	--    end
 	--    -- TODO: create packet/command to send to the device
-		command = CMDS["DISCONNECT_OUTPUT"] .. output
+		command = CMDS["DISCONNECT_OUTPUT"] .. tOutputIntMap[output]
 		-- command = command .. "" 	--tOutputCommandMap[output]	--tPowerCommandMap[output]
 
 	   -- TODO: If the device will automatically report power status after
@@ -143,59 +143,62 @@ function SET_INPUT(idBinding, output, input, input_id, class, output_id, bSwitch
     --]]
     
     local command
-    if (bSwitchSeparate) then	--device switches audio and video separatley
+    -- if (bSwitchSeparate) then	--device switches audio and video separatley
     
-	   --DEBOUNCE LOGIC - in some instances (based upon signal type and project bindings) redundant commands are sent from the proxy
-	   --so we can test here and abort the command, if desired
-	   if (gAVSwitchProxy._PreviouslySelectedInput[output_id] == input_id) then return end    
+	--    --DEBOUNCE LOGIC - in some instances (based upon signal type and project bindings) redundant commands are sent from the proxy
+	--    --so we can test here and abort the command, if desired
+	--    if (gAVSwitchProxy._PreviouslySelectedInput[output_id] == input_id) then return end    
 	   
-	   local isAudio = (output_id >= 4000)
-	   if (isAudio) then
-		  startAudioSelectionTimer(output)		--used in DISCONNECT_OUTPUT
-		  gOutputToInputAudioMap[output] = input
-		  command = ""		--InputCommandMap[input] --tOutputCommandMap[output])
-	   else
-		  startHDMIAudioSelectionTimer(output)	--used in DISCONNECT_OUTPUT
+	--    local isAudio = (output_id >= 4000)
+	--    if (isAudio) then
+	-- 	LogTrace("Connecting Audio")
+	-- 	--   startAudioSelectionTimer(output)		--used in DISCONNECT_OUTPUT
+	-- 	--   gOutputToInputAudioMap[output] = input
+	-- 	--   command = ""		--InputCommandMap[input] --tOutputCommandMap[output])
+	-- 	command = CMDS["SET_INPUT"] .. tOutputIntMap[output] .. ":" .. tInputIntMap[input]
+	--    else
+	-- 	  startHDMIAudioSelectionTimer(output)	--used in DISCONNECT_OUTPUT
 		  
-		  --[[TODO: If your device can use two HDMI outputs to route video to 
-				    one device (i.e TV) and audio to another device (i.e. AV Receiver) then you must review 
-				    the logic in the mirrored output functions below and adjust, if necessary. 
-				    Also these functions can be useful if your device supports EDID management functions. 
-				    The gVideoProviderToRoomMap, gAudioProviderToRoomMap, gOutputToInputMap, gOutputToInputAudioMap 
-				    mapping tables may be beneficial in developing your code logic. 
-		  --]]
-		  local mirrored_output_id = getMirroredOutputID(output_id)
-		  local mirrorState = getMirroredOutputState(output_id)
-		  if (mirrorState == "NO MIRROR ZONE") or (mirrorState == "AUDIO ZONE WITH MIRRORED VIDEO ZONE") or (mirrorState == "VIDEO ZONE WITH MIRRORED AUDIO ZONE") then
-			 gOutputToInputMap[output] = input
-			 command = "" --tInputCommandMap[input] .. tOutputCommandMap[output])
-		  else
-			 --ERR
-			 return
-		  end
+	-- 	  --[[TODO: If your device can use two HDMI outputs to route video to 
+	-- 			    one device (i.e TV) and audio to another device (i.e. AV Receiver) then you must review 
+	-- 			    the logic in the mirrored output functions below and adjust, if necessary. 
+	-- 			    Also these functions can be useful if your device supports EDID management functions. 
+	-- 			    The gVideoProviderToRoomMap, gAudioProviderToRoomMap, gOutputToInputMap, gOutputToInputAudioMap 
+	-- 			    mapping tables may be beneficial in developing your code logic. 
+	-- 	  --]]
+	-- 	  local mirrored_output_id = getMirroredOutputID(output_id)
+	-- 	  local mirrorState = getMirroredOutputState(output_id)
+	-- 	  if (mirrorState == "NO MIRROR ZONE") or (mirrorState == "AUDIO ZONE WITH MIRRORED VIDEO ZONE") or (mirrorState == "VIDEO ZONE WITH MIRRORED AUDIO ZONE") then
+	-- 		 gOutputToInputMap[output] = input
+	-- 		 command = CMDS["SET_INPUT"] .. tOutputIntMap[output] .. ":" .. input
+	-- 	  else
+	-- 		 --ERR
+	-- 		 return
+	-- 	  end
 		  
-	   end
+	--    end
 	   
-    else	--[[device does not switch audio and video separatley, so we can use the mod 1000 values of the connection id 
-			 to determine the audio and video legs of a given connection --]]
+    -- else	--[[device does not switch audio and video separatley, so we can use the mod 1000 values of the connection id 
+	-- 		 to determine the audio and video legs of a given connection --]]
 	   
-	   --[[DEBOUNCE LOGIC - in some instances (based upon signal type and project bindings) redundant commands are sent from the proxy
-		  so we can test here and abort the command, if desired --]]
-	   if (gAVSwitchProxy._PreviouslySelectedInput[output] == input) then return end 
+	--    --[[DEBOUNCE LOGIC - in some instances (based upon signal type and project bindings) redundant commands are sent from the proxy
+	-- 	  so we can test here and abort the command, if desired --]]
+	--    if (gAVSwitchProxy._PreviouslySelectedInput[output] == input) then return end 
 
-	   if (gControlMethod == "IR") then		
-		-- TODO: create packet/command to send to the device
-		command = tInputCommandMap_IR[output][tInputConnMapByID[input].Name]	
-	   else
-		-- TODO: create packet/command to send to the device
-		--Edit the Input Selection command syntax based upon the protocol specification
-		--if the tables referenced below are set up properly them no editing may be necessary 	
-		command = "" 	--tOutputCommandMap[output] .. tInputCommandMap[tInputConnMapByID[input].Name]
-		command = CMDS["SET_INPUT"] .. output .. ":" .. input 
-	   end 	
+	--    if (gControlMethod == "IR") then		
+	-- 	-- TODO: create packet/command to send to the device
+	-- 	command = tInputCommandMap_IR[output][tInputConnMapByID[input].Name]	
+	--    else
+	-- 	-- TODO: create packet/command to send to the device
+	-- 	--Edit the Input Selection command syntax based upon the protocol specification
+	-- 	--if the tables referenced below are set up properly them no editing may be necessary 	
+	-- 	command = "" 	--tOutputCommandMap[output] .. tInputCommandMap[tInputConnMapByID[input].Name]
+	-- 	command = CMDS["SET_INPUT"] .. tOutputIntMap[output] .. ":" .. tInputIntMap[input] 
+	--    end 	
 
-    end
-	
+	-- end
+	LogTrace(gControlMethod)
+	command = CMDS["SET_INPUT"] .. tOutputIntMap[output] .. ":" .. tInputIntMap[input]
     LogTrace("command = " .. command)
     PackAndQueueCommand("SET_INPUT", command)
 end

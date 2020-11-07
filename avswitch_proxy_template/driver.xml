@@ -43,8 +43,8 @@
     <has_video_sense_control>False</has_video_sense_control>
     <video_consumer_count>0</video_consumer_count>
     <video_provider_count>0</video_provider_count>
-    <can_switch_separately>True</can_switch_separately>
-    <requires_separate_switching>True</requires_separate_switching>
+    <can_switch_separately>False</can_switch_separately>
+    <requires_separate_switching>False</requires_separate_switching>
     <navigator_display_option proxybindingid="5001">
       <display_icons>
         <Icon height="140" width="140">controller://driver/avswitch_proxy_template/Icons/device/experience_140.png</Icon>
