@@ -152,6 +152,10 @@ function PROTOCOL_DECLARATIONS.CommandsTableInit_Serial()
 		["NUMBER_9"]       = "",
 		["STAR"]           = "",
 		["DOT"]            = "",
+		--Switching
+		["CONNECT_OUTPUT"] = "@OUT",
+		["DISCONNECT_OUTPUT"] = "$OUT",
+		["SET_INPUT"] = "OUT"
 	}
 	
 	CMDS[AVSWITCH_PROXY_BINDINGID] = {}
@@ -165,17 +169,29 @@ function PROTOCOL_DECLARATIONS.InputOutputTableInit()
 	tOutputCommandMap = {
 		--index:  value of Output Connection id
 		--value:  Protocol Command Data
-		[2000] = "",
-		[2001] = "",
-		[4000] = "",
-		[4001] = "",
+		[2000] = "01",
+		[2001] = "02",
+		[2002] = "03",
+		[2003] = "04",
+		[2004] = "05",
+		[2005] = "06",
+		[2006] = "07",
+		[2007] = "08"
 	}
 	
 	tInputCommandMap = {
 		--index:  Connection Name
 		--value:  Protocol Command Data	
 		--["ADAPTER PORT"] = "33", 
-		[""] = "",
+		["HDMI 1"] = "01",
+		["HDMI 2"] = "02",
+		["HDMI 3"] = "03",
+		["HDMI 4"] = "04",
+		["HDMI 5"] = "05",
+		["HDMI 6"] = "06",
+		["HDMI 7"] = "07",
+		["HDMI 8"] = "08",
+
 	}
 	
 	tInputResponseMap = ReverseTable(tInputCommandMap)	-- Reverses the tInputCommandMap table
@@ -207,23 +223,41 @@ function PROTOCOL_DECLARATIONS.InputOutputTableInit()
 	tOutputConnMap = {
 		--index:  value of Output Connection id
 		--value:  Output Connection Name
-		[2000] = "Video 1",
-		[2001] = "Video 2",
-		[4000] = "Audio 1",
-		[4001] = "Audio 2",
+		[2000] = "HDBT 1",
+		[2001] = "HDBT 2",
+		[2002] = "HDBT 3",
+		[2003] = "HDBT 4",
+		[2004] = "HDBT 5",
+		[2005] = "HDBT 6",
+		[2006] = "HDBT 7",
+		[2007] = "HDBT 8"
 	}
 
 	tInputConnMapByID = {
 		--index:  value of Input Connection id
 		--[1000] = {Name = "INPUT HDMI 1",BindingID = AVSWITCH_PROXY_BINDINGID,},
-		[1000] = {Name = "",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1000] = {Name = "HDMI 1",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1001] = {Name = "HDMI 2",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1002] = {Name = "HDMI 3",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1003] = {Name = "HDMI 4",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1004] = {Name = "HDMI 5",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1005] = {Name = "HDMI 6",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1006] = {Name = "HDMI 7",BindingID = AVSWITCH_PROXY_BINDINGID,},
+		[1007] = {Name = "HDMI 8",BindingID = AVSWITCH_PROXY_BINDINGID,}
 	}
 	
 	tInputConnMapByName = {
 		--index:  Input Connection Name
 		--ID: value of Input Connection id
 		--["INPUT HDMI 1"] = {ID = 0,BindingID = AVSWITCH_PROXY_BINDINGID,},
-		[""] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 1"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 2"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 3"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 4"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 5"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 6"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 7"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,},
+		["HDMI 8"] = {ID = 1000,BindingID = AVSWITCH_PROXY_BINDINGID,}
 	}
 
 end	
@@ -234,10 +268,14 @@ function PROTOCOL_DECLARATIONS.PowerCommandsTableInit_Serial()
 	tPowerCommandMap = {
 		--index:  mod 1000 value of Output Connection id
 		--value:  Protocol Command Data (Power)
-		[0] = "",
-		[1] = "",
-		[2] = "",
-		[3] = "",
+		[0] = "01",
+		[1] = "02",
+		[2] = "03",
+		[3] = "04",
+		[4] = "05",
+		[5] = "06",
+		[6] = "07",
+		[7] = "08",
 	}
 end
 

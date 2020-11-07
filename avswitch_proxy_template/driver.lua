@@ -87,14 +87,22 @@ function ON_DRIVER_INIT.avswitch_driver()
 	 [0]=-1,
 	 [1]=-1,
 	 [2]=-1,
-	 [3]=-1, 
+     [3]=-1,
+	 [4]=-1,
+	 [5]=-1,
+	 [6]=-1,
+	 [7]=-1, 
      }
 
      gOutputToInputAudioMap={
 	 [0]=-1,
 	 [1]=-1,
 	 [2]=-1,
-	 [3]=-1,
+     [3]=-1,
+	 [4]=-1,
+	 [5]=-1,
+	 [6]=-1,
+	 [7]=-1, 
      }
 	
      -- Map to track full output id to Room id. This will be used in DISCONNECT_OUTPUT

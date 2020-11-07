@@ -39,18 +39,19 @@ function CONNECT_OUTPUT(output, class, output_id)
     else
 
 		-- TODO: create packet/command to send to the device
-		command = ""		--tPowerCommandMap[output] .. "01"
+		command = CMDS["CONNECT_OUTPUT"] .. output
+		--command = ""		--tPowerCommandMap[output] .. "01"
 		LogTrace("command = " .. command)
 		PackAndQueueCommand("CONNECT_OUTPUT", command, command_delay, delay_units)
 		
-	     local isAudio = (output_id >= 4000)
-	     if (isAudio) then
-		  GetDeviceVolumeStatus(output)
-	     end		
+	    --  local isAudio = (output_id >= 4000)
+	    --  if (isAudio) then
+		--   GetDeviceVolumeStatus(output)
+	    --  end		
 		
-		-- TODO: If the device will automatically report power status after
-		--	the On command is sent, then the line below can be commented out		
-		GetDevicePowerStatus(output)
+		-- -- TODO: If the device will automatically report power status after
+		-- --	the On command is sent, then the line below can be commented out		
+		-- GetDevicePowerStatus(output)
 		
     end
 end
@@ -74,45 +75,41 @@ function DISCONNECT_OUTPUT(output, class, output_id)
     local command_delay = tonumber(Properties["Power Off Delay Seconds"])
     local delay_units = "SECONDS"
     local command 
-    local isAudio = (output_id >= 4000)
+    -- local isAudio = (output_id >= 4000)
     
-    if(isAudio) then
-	   LogTrace("Received From Proxy: DISCONNECT_OUTPUT for AUDIO:: Output(" .. output_id ..  ")")   
-    else
-	   LogTrace("Received From Proxy: DISCONNECT_OUTPUT for VIDEO:: Output(" .. output_id ..  ")") 
-    end
+    -- if(isAudio) then
+	--    LogTrace("Received From Proxy: DISCONNECT_OUTPUT for AUDIO:: Output(" .. output_id ..  ")")   
+    -- else
+	--    LogTrace("Received From Proxy: DISCONNECT_OUTPUT for VIDEO:: Output(" .. output_id ..  ")") 
+    -- end
 
     --[[In certain scenarios (based upon AV connections and project bindings), a DISCONNECT_OUTPUT command is sent in error by the proxy.
 	   This code block utilized timers that are started in the SET_INPUT function to determine if this DISCONNECT_OUTPUT command is
 	   associated with a reselection transaction, in whcih case we will abort...
     --]]
-    if not (isAudio) then
-	   if (isAudioSelectionInProgress(output_id) == true) then 
-		  LogTrace("Audio Selection is in progress.  Not Disconnecting.")
-		  return 
-	   elseif (isHDMIAudioSelectionInProgress(output, output_id) == true) then 
+	if (isHDMIAudioSelectionInProgress(output, output_id) == true) then 
 		  LogTrace("HDMI Audio Selection is in progress.  Not Disconnecting.")
 		  return  
-	   end
     end    		
     
     -- TODO: create packet/command to send to the device
     if (gControlMethod == "IR") then
 	   command = CMDS_IR_ZONES[output]["DISCONNECT_OUTPUT"]
     else		
-	   if (isAudio) then
-		  gOutputToInputAudioMap[output] = -1
-		  command = ""  	--audio disconnect element
-	   else
-		  gOutputToInputMap[output] = -1
-		  command = ""		--video disconnect element
-	   end
-	   -- TODO: create packet/command to send to the device
-	   command = command .. "" 	--tOutputCommandMap[output]	--tPowerCommandMap[output]
+	--    if (isAudio) then
+	-- 	  gOutputToInputAudioMap[output] = -1
+	-- 	  command = ""  	--audio disconnect element
+	--    else
+	-- 	  gOutputToInputMap[output] = -1
+	-- 	  command = ""		--video disconnect element
+	--    end
+	--    -- TODO: create packet/command to send to the device
+		command = CMDS["DISCONNECT_OUTPUT"] .. output
+		-- command = command .. "" 	--tOutputCommandMap[output]	--tPowerCommandMap[output]
 
 	   -- TODO: If the device will automatically report power status after
 	   --	the Off command is sent, then the line below can be commented out
-	   GetDevicePowerStatus(output)		
+	   --GetDevicePowerStatus(output)		
     end  
     
     LogTrace("command = " .. command)
@@ -193,7 +190,8 @@ function SET_INPUT(idBinding, output, input, input_id, class, output_id, bSwitch
 		-- TODO: create packet/command to send to the device
 		--Edit the Input Selection command syntax based upon the protocol specification
 		--if the tables referenced below are set up properly them no editing may be necessary 	
-		command = "" 	--tOutputCommandMap[output] .. tInputCommandMap[tInputConnMapByID[input].Name] 
+		command = "" 	--tOutputCommandMap[output] .. tInputCommandMap[tInputConnMapByID[input].Name]
+		command = CMDS["SET_INPUT"] .. output .. ":" .. input 
 	   end 	
 
     end
