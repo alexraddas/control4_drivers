@@ -5,7 +5,7 @@
   <name>Blackbird 8x8 HDbaseT Matrix</name>
   <model>Blackbird_39670</model>
   <created>11/06/2020 2:54 PM</created>
-  <modified>11/06/2020 5:19 PM</modified>
+  <modified>11/06/2020 7:59 PM</modified>
   <version>1</version>
   <small image_source="c4z">Icons/device_sm.png</small>
   <large image_source="c4z">Icons/device_lg.png</large>
@@ -41,8 +41,8 @@
     <has_up_down_treble_control>False</has_up_down_treble_control>
     <has_up_down_volume_control>False</has_up_down_volume_control>
     <has_video_sense_control>False</has_video_sense_control>
-    <video_consumer_count>0</video_consumer_count>
-    <video_provider_count>0</video_provider_count>
+    <video_consumer_count>8</video_consumer_count>
+    <video_provider_count>8</video_provider_count>
     <can_switch_separately>False</can_switch_separately>
     <requires_separate_switching>False</requires_separate_switching>
     <navigator_display_option proxybindingid="5001">
@@ -128,41 +128,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3000</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 1</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>1000</id>
       <audiosource>false</audiosource>
       <videosource>false</videosource>
       <connectionname>HDMI 1</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3001</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 2</connectionname>
       <facing>1</facing>
       <consumer>true</consumer>
       <linelevel>false</linelevel>
@@ -188,41 +158,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3002</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 3</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>1002</id>
       <audiosource>false</audiosource>
       <videosource>false</videosource>
       <connectionname>HDMI 3</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3003</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 4</connectionname>
       <facing>1</facing>
       <consumer>true</consumer>
       <linelevel>false</linelevel>
@@ -248,21 +188,6 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3004</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 5</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>1004</id>
       <audiosource>false</audiosource>
@@ -278,41 +203,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3005</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 6</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>1005</id>
       <audiosource>false</audiosource>
       <videosource>false</videosource>
       <connectionname>HDMI 6</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3006</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 7</connectionname>
       <facing>1</facing>
       <consumer>true</consumer>
       <linelevel>false</linelevel>
@@ -338,21 +233,6 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>3007</id>
-      <audiosource>false</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 8</connectionname>
-      <facing>1</facing>
-      <consumer>true</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>1007</id>
       <audiosource>false</audiosource>
@@ -368,41 +248,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4000</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDBT 1</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>2000</id>
       <audiosource>false</audiosource>
       <videosource>true</videosource>
       <connectionname>HDBT 1</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4001</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDBT 2</connectionname>
       <facing>1</facing>
       <consumer>false</consumer>
       <linelevel>false</linelevel>
@@ -428,41 +278,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4002</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDBT 3</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>2002</id>
       <audiosource>false</audiosource>
       <videosource>true</videosource>
       <connectionname>HDBT 3</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4003</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDBT 4</connectionname>
       <facing>1</facing>
       <consumer>false</consumer>
       <linelevel>false</linelevel>
@@ -488,41 +308,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4004</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDBT 5</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>2004</id>
       <audiosource>false</audiosource>
       <videosource>true</videosource>
       <connectionname>HDBT 5</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4005</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDBT 6</connectionname>
       <facing>1</facing>
       <consumer>false</consumer>
       <linelevel>false</linelevel>
@@ -548,41 +338,11 @@
       </classes>
     </connection>
     <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4006</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 7 Output</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
       <type>5</type>
       <id>2006</id>
       <audiosource>false</audiosource>
       <videosource>true</videosource>
       <connectionname>HDMI 7 Output</connectionname>
-      <facing>1</facing>
-      <consumer>false</consumer>
-      <linelevel>false</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-    </connection>
-    <connection proxybindingid="5001">
-      <type>6</type>
-      <id>4007</id>
-      <audiosource>true</audiosource>
-      <videosource>false</videosource>
-      <connectionname>HDMI 8 Output</connectionname>
       <facing>1</facing>
       <consumer>false</consumer>
       <linelevel>false</linelevel>

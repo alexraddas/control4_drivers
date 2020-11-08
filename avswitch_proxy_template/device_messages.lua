@@ -30,7 +30,8 @@ function GetMessage()
 	--      from the receive buffer(gReceiveBuffer).
 	--		The example shown here will return all characters from the beginning of 
 	--		the gReceiveBuffer up until but not including the first carriage return.
-	local pattern = "^.*: (.*)"
+	local pattern = "^(.-)\r()"
+	--local pattern = "^.*"
 	
 	if (gReceiveBuffer:len() > 0) then
 		message, pos = string.match(gReceiveBuffer, pattern)
@@ -41,7 +42,7 @@ function GetMessage()
 		gReceiveBuffer = gReceiveBuffer:sub(pos)		
 	end
 
-	return message
+	return HandleMessage(message)
 	
 end
 
@@ -77,13 +78,23 @@ function HandleMessage(message)
 	--		The example shown here will return all alpha characters 
 	--		up to the first non-alpha character and store them in the "name" variable
 	--		the remaining characters will be returned and stored in the "value" variable.
-	local pattern =  "(%a+)(.+)()"
+	local testhdmi = 
+	if string.find(message, "HDBase") then
+		LogTrace("HDMI Matrix Status Check")
+	elseif string.find(message, "Turn") then 
+		LogTrace("HDMI Matrix Status Check")
+	elseif string.find(message, "HDBase") then 
+		LogTrace("HDMI Matrix Status Check")
+	elseif string.find(message, "HDBase") then 
+		LogTrace("HDMI Matrix Status Check")
+	end
+	-- local pattern =  "(%a+)(.+)()"
 
-	local name, value, pos = string.match(message, pattern)
-	name = name or message
-	value = value or ""	
+	-- local name, value, pos = string.match(message, pattern)
+	-- name = name or message
+	-- value = value or ""	
 
-	DispatchMessage(name, value)
+	-- DispatchMessage(name, value)
 	
 end
 
@@ -144,6 +155,20 @@ function DEV_MSG.POWER(value)
 	else
 		LogWarn("DEV_MSG.POWER(): value not valid - " .. value)
 	end		
+end
+
+
+function DEV_MSG.Turn(value)
+	LogTrace("DEV_MSG.Turn(), value = " .. value)
+	
+	-- TODO: derive and set  "output" from value or create separate DEV_MSG functions for each Output Connection
+	local output = 0 	--mod 1000 value of Output Connection ID
+	
+	-- TODO: 01 & 00 values will need to be edited based upon the device protocol values 
+	--indicating if the device is on or off
+
+	--gAVSwitchProxy:dev_PowerOn(output)
+
 end
 
 function DEV_MSG.VOLUME(value)
@@ -243,3 +268,4 @@ function DEV_MSG.LOUDNESS(value)
 	local state  
 	gAVSwitchProxy:dev_LoudnessChanged(output, state)
 end
+

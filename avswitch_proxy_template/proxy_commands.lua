@@ -19,6 +19,14 @@ end
 		class:  connection class
 		output_id: value of Output Connection id
 --]]
+function ON(value)
+	LogTrace(value)
+end
+
+function OFF(value)
+	LogTrace(value)
+end
+
 function CONNECT_OUTPUT(output, class, output_id)
     --[[ TODO:  The code below is intended as an example to expose the various elements involved in creating a valid Zone On command.
 			 Special care should be taken to understand your device's capabilities and protocol syntax and, specifically, 
